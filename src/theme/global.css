@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 1em;
+}
+
+::-webkit-scrollbar-track {
+  background: #272221;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #272221;
+  border-radius: 15px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #272221;
+  max-height: 10px;
+}
+
+.font-baloo {
+  font-family: 'Baloo 2', cursive;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.intro-container {
+  background: url('../assets/background.png') no-repeat center, linear-gradient(0deg, #ffffff 0%,#fafafa 100%);
+  background-size: cover;
+}
