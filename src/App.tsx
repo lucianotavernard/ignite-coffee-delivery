@@ -1,3 +1,11 @@
+import { BrowserRouter } from 'react-router-dom'
+
+import { Router } from './routes'
+
 export function App() {
-  return <h1>ViteJS</h1>
+  return (
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  )
 }
