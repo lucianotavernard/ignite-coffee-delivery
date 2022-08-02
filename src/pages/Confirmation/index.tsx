@@ -1,10 +1,36 @@
+import { useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { MapPin, Timer, CurrencyDollar } from 'phosphor-react'
 
 import deliveryImg from '@/assets/delivery.png'
 
 import { Header } from '@/components/Header'
 
+type Location = {
+  street: string
+  number: string
+  neighborhood: string
+  city: string
+  uf: string
+  paymentMethod: 'money' | 'debit' | 'credit'
+}
+
+const paymentMethods = {
+  money: 'Dinheiro',
+  debit: 'Cartão de débito',
+  credit: 'Cartão de Crédito'
+} as const
+
 export function Confirmation() {
+  const { state } = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!state) navigate('/')
+  }, [])
+
+  const location = state as Location
+
   return (
     <div className="flex justify-center w-100 min-h-screen bg-[#FAFAFA]">
       <main className="flex flex-col items-center w-full">
@@ -33,10 +59,14 @@ export function Confirmation() {
                     <hgroup>
                       <p className="text-left">
                         Entrega em{' '}
-                        <strong>Rua João Daniel Martinelli, 102</strong>
+                        <strong>
+                          {location.street}, {location.number}
+                        </strong>
                       </p>
 
-                      <p>Farrapos - Porto Alegre, RS</p>
+                      <p>
+                        {location.neighborhood} - {location.city}, {location.uf}
+                      </p>
                     </hgroup>
                   </li>
 
@@ -58,7 +88,7 @@ export function Confirmation() {
 
                     <hgroup>
                       <p className="text-left">Pagamento na entrega</p>
-                      <strong>Cartão de Crédito</strong>
+                      <strong>{paymentMethods[location.paymentMethod]}</strong>
                     </hgroup>
                   </li>
                 </ul>

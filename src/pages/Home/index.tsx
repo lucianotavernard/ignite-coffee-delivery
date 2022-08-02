@@ -2,6 +2,8 @@ import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
 import bannerImg from '@/assets/banner.png'
 
+import { availableProducts } from '@/contexts/data/coffees'
+
 import { Header } from '@/components/Header'
 import { CardCoffee } from './components/CardCoffee'
 
@@ -67,21 +69,10 @@ export function Home() {
               Nossos cafés
             </h2>
 
-            <section className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
-              <CardCoffee />
+            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
+              {availableProducts.map((product) => (
+                <CardCoffee key={product.id} coffee={product} />
+              ))}
             </section>
           </div>
         </section>

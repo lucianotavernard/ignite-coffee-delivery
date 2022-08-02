@@ -1,15 +1,25 @@
-import { useState } from 'react'
 import { Minus, Plus } from 'phosphor-react'
 
-export function QuantityInput() {
-  const [quantity, setQuantity] = useState(0)
+type QuantityInput = {
+  quantity: number
+  onChange: (quantity: number) => void
+}
+
+export function QuantityInput({ quantity, onChange }: QuantityInput) {
+  function handleIncrease() {
+    onChange(quantity + 1)
+  }
+
+  function handleDecrease() {
+    onChange(quantity - 1)
+  }
 
   return (
     <div className="flex justify-between items-center gap-2 p-2 rounded-md bg-[#E6E5E5]">
       <button
         type="button"
         disabled={quantity === 0}
-        onClick={() => setQuantity((state) => state - 1)}
+        onClick={handleDecrease}
         className="transition-colors text-[#8047F8] hover:text-[#4B2995] hover:cursor-pointer"
       >
         <Minus size={20} weight="fill" />
@@ -23,7 +33,7 @@ export function QuantityInput() {
 
       <button
         type="button"
-        onClick={() => setQuantity((state) => state + 1)}
+        onClick={handleIncrease}
         className="transition-colors text-[#8047F8] hover:text-[#4B2995] hover:cursor-pointer"
       >
         <Plus size={20} weight="fill" />
