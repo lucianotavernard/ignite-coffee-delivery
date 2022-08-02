@@ -3,7 +3,6 @@ import { ShoppingCart } from 'phosphor-react'
 
 import { CartContext } from '@/contexts/CartContext'
 
-import coffeeImg from '@/assets/coffees/tradicional.png'
 import { QuantityInput } from '@/components/Form/QuantityInput'
 
 type Coffee = {
@@ -20,7 +19,7 @@ type CardCoffeeProps = {
 }
 
 export function CardCoffee({ coffee }: CardCoffeeProps) {
-  const { name, price, description, categories } = coffee
+  const { name, price, photo, description, categories } = coffee
 
   const [quantity, setQuantity] = useState(0)
   const { addProductToCart } = useContext(CartContext)
@@ -37,7 +36,7 @@ export function CardCoffee({ coffee }: CardCoffeeProps) {
     <article className="flex flex-col justify-between min-h-[20rem] p-6 pt-0 rounded-tl-md rounded-tr-[2rem] rounded-br-md rounded-bl-[2rem] text-center bg-[#F3F2F2]">
       <header className="flex flex-col justify-center items-center">
         <picture className="flex justify-center items-center w-full h-full max-w-[8rem] max-h-[8rem] -mt-5 mb-4">
-          <img src={coffeeImg} alt="" />
+          <img src={`src/assets/coffees/${photo}`} alt="" />
         </picture>
 
         <div className="flex flex-wrap justify-center items-center gap-1">
